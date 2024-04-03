@@ -1,0 +1,14 @@
+services:
+  python-chat-rag:
+    container_name: python-chat-rag
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - 3000:3000
+    entrypoint: sh -c "pnpm install && pnpm run build && pnpm run dev"
+    working_dir: /python-chat-rag
+    volumes:
+      - .:/python-chat-rag

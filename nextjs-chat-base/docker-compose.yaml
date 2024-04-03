@@ -1,0 +1,14 @@
+services:
+  chat-app:
+    container_name: chat-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - 3000:3000
+    entrypoint: sh -c "pnpm install && pnpm run build && pnpm run dev"
+    working_dir: /chat-app
+    volumes:
+      - .:/chat-app
