@@ -35,10 +35,10 @@ class StreamingStdOutCallbackHandlerYield(StreamingStdOutCallbackHandler):
         q.put(stop_item)
 
 from flask import request, Response, stream_with_context
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 import os
-from langchain.vectorstores import Chroma
-from langchain.embeddings import GPT4AllEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import GPT4AllEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains import ConversationalRetrievalChain
 @app.route('/', methods=['POST'])
@@ -83,7 +83,7 @@ def send_prompt():
     return Response(stream_with_context(ai_response['answer']))
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings import GPT4AllEmbeddings
+from langchain_community.embeddings import GPT4AllEmbeddings
 @app.route('/embed', methods=['POST'])
 def embed():
     try:
